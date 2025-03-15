@@ -1,0 +1,281 @@
+/* =======================
+   Base & Reset Styles
+   ======================= */
+   * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    line-height: 1.6;
+    color: #fff;
+    background-color: #222;
+  }
+  
+  /* =======================
+     Header
+     ======================= */
+  header {
+    width: 100%;
+    background: #111;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    padding: 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+  }
+
+/* Logo o Nombre en el lado izquierdo */ 
+.logo {
+    flex: 1;
+}
+
+.logo a {
+    text-decoration: none;
+    font-weight: bold;
+    color: #fff;
+} 
+  
+  header nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 20px;
+  }
+  
+  header nav ul li {
+    margin-left: 40px;
+  }
+  
+  header nav ul li a {
+    position: relative;
+    text-decoration: none;
+    color: #fff;
+    font-weight: 600;
+    transition: color 0.3s ease;
+  }
+
+/* Pseudoelemento para el underline */
+  nav ul li a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #fff; /* Color del underline */
+    transform: scaleX(0);  /* Inicialmente oculto (sin anchura) */
+    transform-origin: left; /* La transformación inicia desde la izquierda */
+    transition: transform 0.3s ease-in-out; /* Transición suave */
+  }
+
+/* Al hacer hover, se expande la línea */
+nav ul li a:hover::after {
+    transform: scaleX(1);
+}
+  
+  /* =======================
+     Sections
+     ======================= */
+  section {
+    padding: 100px 20px; /* Espacio superior para compensar el header fijo */
+  }
+  
+  h1 {
+    font-size: 2.5em; /* Adjust the value as needed */
+  }
+
+  h1, h2 {
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  
+  /* =======================
+     Home Section
+     ======================= */
+  #home {
+    text-align: center;
+  }
+
+  #home h1{
+    font-size: 6.5em;
+    background: linear-gradient(90deg, #ff0000, #00ff00, #0000ff);  /* Colores de ejemplo */
+    background-size: 200%;             /* Para que el gradiente se mueva suavemente */
+    -webkit-background-clip: text;     /* Recorta el fondo al texto (compatibilidad con Chrome/Safari) */
+    background-clip: text;             /* Standard property for compatibility */
+    -webkit-text-fill-color: transparent;  /* Hace que el texto sea transparente y se vea el gradiente */
+    animation: gradientAnimation 5s infinite;  /* Efecto de animación */
+  }
+  
+  /* Definición de la animación del gradiente */
+  @keyframes gradientAnimation {
+    0% {
+      background-position: 0%;
+    }
+    50% {
+      background-position: 100%;
+    }
+    100% {
+      background-position: 0%;
+    }
+  }
+  
+  /* =======================
+     About Section
+     ======================= */
+  #about {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  #about p{
+    font-size: 1.3em;
+  }
+  
+  /* =======================
+     Services Section
+     ======================= */
+#services {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 100px 20px;  /* Espacio superior, por ejemplo, para compensar el header */
+    text-align: center;   /* Centra los elementos en bloque y el texto */
+}
+  
+#services h1 {
+    margin-bottom: 0px;
+    text-align: center;
+}
+
+  /* Contenedor exclusivo para la animación de servicios */
+.rotator {
+    position: relative;
+    height: 200px;       /* Altura fija únicamente para la animación */
+    overflow: hidden;
+    margin-bottom: 20px; /* Separación entre la animación y la sección de beneficios */
+    margin-top: 0;
+}
+
+/* Elementos animados para los servicios */
+  .service {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);  /* Centra el contenido en el contenedor rotator */
+    width: 100%;
+    text-align: center;
+    opacity: 0;
+    font-size: 1.5em;
+    -webkit-animation: fadeEffect 32s infinite;
+    animation: fadeEffect 32s infinite;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+  }
+  
+/* Retrasos para cada servicio (ejemplo para 3 servicios) */
+.service:nth-child(1) {
+    -webkit-animation-delay: 0s;
+    animation-delay: 0s;
+  }
+  .service:nth-child(2) {
+    -webkit-animation-delay: 4s;
+    animation-delay: 4s;
+  }
+  .service:nth-child(3) {
+    -webkit-animation-delay: 8s;
+    animation-delay: 8s;
+  }
+  .service:nth-child(4) {
+    -webkit-animation-delay: 12s;
+    animation-delay: 12s;
+  }
+  .service:nth-child(5) {
+    -webkit-animation-delay: 16s;
+    animation-delay: 16s;
+  }
+  .service:nth-child(6) {
+    -webkit-animation-delay: 20s;
+    animation-delay: 20s;
+  }
+  .service:nth-child(7) {
+    -webkit-animation-delay: 24s;
+    animation-delay: 24s;
+  }
+  .service:nth-child(8) {
+    -webkit-animation-delay: 28s;
+    animation-delay: 28s;
+  }
+
+/* Keyframes ajustados para asignar una ventana de aproximadamente 4s sin superposición */
+@-webkit-keyframes fadeEffect {
+    0%   { opacity: 0; }
+    8%   { opacity: 0; }
+    12%  { opacity: 1; }
+    20%  { opacity: 1; }
+    24%  { opacity: 0; }
+    100% { opacity: 0; }
+  }
+  @keyframes fadeEffect {
+    0%   { opacity: 0; }
+    8%   { opacity: 0; }
+    12%  { opacity: 1; }
+    20%  { opacity: 1; }
+    24%  { opacity: 0; }
+    100% { opacity: 0; }
+  }
+
+/* Estilos para la sección de Beneficios */
+.benefits {
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  .benefits h2 {
+    font-size: 2.5em;
+    margin-bottom: 50px;
+  }
+  
+  .benefits p {
+    font-size: 1.3em;
+    line-height: 2;
+    color: #fff;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  /* =======================
+     Contact Section
+     ======================= */
+  #contact {
+    text-align: center;
+  }
+
+  #contact p{
+    font-size: 1.3em;
+  }
+  
+  #contact a {
+    color: #0066cc;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+  }
+  
+  #contact a:hover {
+    text-decoration: underline;
+  }
+  
+  /* =======================
+     Footer
+     ======================= */
+  footer {
+    text-align: center;
+    padding: 20px;
+    background: #111;
+    font-size: 0.9em;
+  }
+  
